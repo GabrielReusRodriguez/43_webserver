@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Request.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 21:58:50 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/11 20:04:49 by Gabriel Reu      ###   ########.fr       */
+/*   Created: 2025/01/06 13:51:54 by Gabriel Reu       #+#    #+#             */
+/*   Updated: 2025/01/06 14:49:02 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef REQUEST_HPP
+# define REQUEST_HPP
 
-#include "WebServer.hpp"
+# include <string>
 
-int	main(int argc, char **argv)
+class Request
 {
-	WebServer ws;
-	
-	(void)argc;
-	(void)argv;
+	protected:
+		int				_fd_out;
+		unsigned int	http_code;
+		std::string		raw_req;
 
-	ws.start();
-//	ws.run();
-	ws.stop();
-	return (EXIT_SUCCESS);
-}
+	public:
+		Request();
+		Request(const Request &request);
+		~Request();
+		
+		void			operator=(const Request &request);
+		int				&getFdOut(void) const;
+		void			setFdOut(const int &fd_out);
+};
+
+#endif

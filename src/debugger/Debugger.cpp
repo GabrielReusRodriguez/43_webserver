@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   webserver.hpp                                      :+:      :+:    :+:   */
+/*   Debugger.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 22:00:48 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/05 22:03:08 by Gabriel Reu      ###   ########.fr       */
+/*   Created: 2025/01/11 20:25:09 by Gabriel Reu       #+#    #+#             */
+/*   Updated: 2025/01/11 20:29:33 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEBSERVER_HPP
-# define WEBSERVER_HPP
+#include <iostream>
+#include <string>
 
-#endif
+#include "Debugger/Debugger.hpp"
+
+
+Debugger::Debugger(void)
+{
+
+}
+
+Debugger::~Debugger(void)
+{
+	
+}
+
+void	Debugger::debug(const std::string& msg)
+{
+	std::cerr << DEBUG_HEADER << msg << std::endl;
+	
+}

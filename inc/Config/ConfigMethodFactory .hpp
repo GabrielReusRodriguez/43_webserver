@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ConfigMethodFactory .hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 21:58:50 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/11 20:04:49 by Gabriel Reu      ###   ########.fr       */
+/*   Created: 2025/01/06 14:12:12 by Gabriel Reu       #+#    #+#             */
+/*   Updated: 2025/01/06 14:18:10 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef CONFIGFACTORY_HPP
+# define CONFIGFACTORY_HPP
 
-#include "WebServer.hpp"
+#include <string>
 
-int	main(int argc, char **argv)
+# include "Config.hpp"
+
+class ConfigMethodFactory
 {
-	WebServer ws;
-	
-	(void)argc;
-	(void)argv;
+	public:
+		virtual Config	&createConfig(const std::string cfg_file) = 0;
+};
 
-	ws.start();
-//	ws.run();
-	ws.stop();
-	return (EXIT_SUCCESS);
-}
+#endif

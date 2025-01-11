@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Exception.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 21:58:50 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/11 20:04:49 by Gabriel Reu      ###   ########.fr       */
+/*   Created: 2025/01/10 19:57:05 by Gabriel Reu       #+#    #+#             */
+/*   Updated: 2025/01/11 19:34:29 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef EXCEPTION_HPP
+# define EXCEPTION_HPP
 
-#include "WebServer.hpp"
+# include <string>
+# include <exception>
 
-int	main(int argc, char **argv)
+class Exception : public std::exception
 {
-	WebServer ws;
-	
-	(void)argc;
-	(void)argv;
+	public:
+		Exception(const char *msg);
+		Exception(std::string& msg);
+		Exception(const int& _errno);
+		//Lo hacemos virtual para aceptar subclases.
+		virtual ~Exception(void) throw ();
 
-	ws.start();
-//	ws.run();
-	ws.stop();
-	return (EXIT_SUCCESS);
-}
+		//pdte mirar el what...
+		const char*	what(void);
+
+	protected:
+		std::string	_msg;
+};
+
+#endif

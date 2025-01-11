@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Debugger.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 21:58:50 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/11 20:04:49 by Gabriel Reu      ###   ########.fr       */
+/*   Created: 2025/01/11 20:18:40 by Gabriel Reu       #+#    #+#             */
+/*   Updated: 2025/01/11 20:29:14 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef DEBUGGER_HPP
+# define DEBUGGER_HPP
 
-#include "WebServer.hpp"
+# include <string>
 
-int	main(int argc, char **argv)
+# define DEBUG_HEADER	"DEBUG: "
+
+class Debugger
 {
-	WebServer ws;
-	
-	(void)argc;
-	(void)argv;
+	private:
+		Debugger(void);
+		~Debugger(void);
+	public:
+		static void	debug(const std::string& msg);
+};
 
-	ws.start();
-//	ws.run();
-	ws.stop();
-	return (EXIT_SUCCESS);
-}
+#endif

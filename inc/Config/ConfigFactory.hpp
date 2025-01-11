@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ConfigFactory.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 21:58:50 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/11 20:04:49 by Gabriel Reu      ###   ########.fr       */
+/*   Created: 2025/01/06 14:12:12 by Gabriel Reu       #+#    #+#             */
+/*   Updated: 2025/01/06 14:48:43 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef CONFIGFACTORY_HPP
+# define CONFIGFACTORY_HPP
 
-#include "WebServer.hpp"
+# include "Config/ConfigMethodFactory.hpp"
 
-int	main(int argc, char **argv)
+class ConfigFactory : public ConfigMethodFactory 
 {
-	WebServer ws;
-	
-	(void)argc;
-	(void)argv;
 
-	ws.start();
-//	ws.run();
-	ws.stop();
-	return (EXIT_SUCCESS);
-}
+};
+
+#endif

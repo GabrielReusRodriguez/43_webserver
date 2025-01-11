@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   NetWorkException.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/05 21:58:50 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/11 20:04:49 by Gabriel Reu      ###   ########.fr       */
+/*   Created: 2025/01/10 19:37:28 by Gabriel Reu       #+#    #+#             */
+/*   Updated: 2025/01/11 19:34:22 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef NETWORKEXCEPTION_HPP
+# define NETWORKEXCEPTION_HPP
 
-#include "WebServer.hpp"
+# include <string>
 
-int	main(int argc, char **argv)
+# include "Exceptions/Exception.hpp"
+
+class NetworkException: public Exception
 {
-	WebServer ws;
+	public:
+		NetworkException(const char *msg);
+		NetworkException(std::string& msg);
+		NetworkException(const int& erno);
+		//Lo hacemos virtual para aceptar subclases.
+		virtual ~NetworkException(void) throw ();
 	
-	(void)argc;
-	(void)argv;
+	protected:
+		std::string	_msg;
+};
 
-	ws.start();
-//	ws.run();
-	ws.stop();
-	return (EXIT_SUCCESS);
-}
+#endif
