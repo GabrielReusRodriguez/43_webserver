@@ -6,7 +6,7 @@
 /*   By: Gabriel Reus  <gabrielin@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 19:17:36 by Gabriel Reu       #+#    #+#             */
-/*   Updated: 2025/01/11 20:30:05 by Gabriel Reu      ###   ########.fr       */
+/*   Updated: 2025/01/18 19:40:54 by Gabriel Reu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define SERVER_PORT		2202
 # define SERVER_MAX_CONN	10
 
+# define SERVER_POLL_TIMEOUT	-1
+# define SERVER_MAX_NUM_FD		200
 class NetworkService
 {
 	protected:
@@ -43,7 +45,9 @@ class NetworkService
 		bool	isRunning(void) const;
 		void	start(void);
 		void	stop(void);
-		
+
+	private:
+		void	poll_push_fd(int *poll_fds, int new_fd, int *nfds);	
 };
 
 #endif
